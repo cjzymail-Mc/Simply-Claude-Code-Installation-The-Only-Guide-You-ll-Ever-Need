@@ -5,7 +5,8 @@ Thank you Grok my best bud~
 
 
 安装 Claude Code 非常简单，直接在powershell中输入 【irm https://claude.ai/install.ps1 | iex】即可
-如果你碰到下面和我一样的错误，dont panic  
+
+当然，如果很不幸，你碰到下面和我一样的错误，dont panic  
 
     PS C:\Users\xy24> irm https://claude.ai/install.ps1 | iex
     Setting up Claude Code...
