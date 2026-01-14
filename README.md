@@ -27,6 +27,7 @@ Thank you Grok my best bud~
       choosing the default editor used by git—— 可选 vim / notepad++/visual studio/sublime/vscodium/notepad  我应该选哪个？？？
       1. Visual Studio Code（如果你已安装 VS Code，就选这个）
       2. Notepad（如果你是新手）最简单，Windows 自带 ✅
+      3.（其他选项，高手请自便，新手不用管）
       ...
       
       
