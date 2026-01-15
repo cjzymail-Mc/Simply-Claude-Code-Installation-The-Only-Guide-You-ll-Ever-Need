@@ -124,6 +124,29 @@ Thank you Grok my best bud~
       在 Grok 细致入微的指导下，Git for Windows总算安装成功了。。。
 
 
+        -------------------- 不懂就问：Git 是个啥？ ------------------
+        Git 是一个版本控制系统：用来记录你项目中文件的每一次改动历史，方便你：
+        保存“快照”（commit）：随时回到某个版本
+        看改了什么（diff）
+        多人协作：从远端仓库拉取/合并（pull/merge），把你的改动推上去（push）
+        分支开发（branch）：不同功能互不干扰
+        在 Windows 上，你通常需要安装 Git for Windows 才会有 Git（也就是 git.exe 命令）。装完后你会得到：
+        git 命令（核心）
+        Git Bash（一个可选的终端）
+        以及把 Git 加到系统 PATH（这样 PowerShell/CMD 也能用 git）
+        你可以在 PowerShell 里验证是否装好了：
+        git --version
+
+
+
+
+
+
+
+
+
+
+
 
 --------------------------------------------------------------------------
 步骤2：安装  Powershell 7 - x64 （系统自带pwshell 5，你必须装 pwshell版本7xx）
