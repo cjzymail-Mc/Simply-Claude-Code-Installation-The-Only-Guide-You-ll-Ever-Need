@@ -325,3 +325,124 @@ py --list
 **适用系统**：Windows PowerShell  
 **Python 版本**：3.7+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+.venv 虚拟环境 （ Mc Manuscript Essential）
+---------------------------------------------------------------------------
+（必须重视！！项目越来越多了 ）
+在虚拟环境中折腾了一整天，GPT实在坑爹，一个个问题问，一个个整理笔记。。。
+以后直接问 banana 要手写版笔记就好了
+
+
+步骤1：新建虚拟环境（必须用代码！！！）
+powershell
+cd "D:\Python ( Claude+GPT+Gemini+Grok )\2026-01-13 图片识别（旭宏-马拉松统计）"
+py -m venv .venv
+# 这样新建的每个虚拟环境都叫 .venv
+# 行业惯例。。。虚拟环境可以同名【.venv】
+
+or
+# 虚拟环境也可以自定义名称【mc_venv】
+py -m venv mc_venv
+py -m venv marathon_env
+
+
+
+步骤2：手工新建、编辑 requirements.txt
+【手工编辑】requirements.txt 文件，例如，内容可以是：
+requests==2.31.0
+pandas>=2.1
+opencv-python
+
+【集体安装】
+pwshell 输入，一件安装所有requirement依赖包
+& ".\.venv\Scripts\python.exe" -m pip install -r requirements.txt
+
+or
+【单个安装】
+用 venv 的 pip 安装依赖包xxx（关键点：用 venv 的 python 调 pip）
+& ".\.venv\Scripts\python.exe" -m pip install xxx
+
+
+步骤3：旧pip install记录迁移
+★★★（推荐！）指定环境/路径导出：
+cd D:\project2
+& ".\.venv\Scripts\python.exe" -m pip freeze > ".\requirements.txt"
+
+【我以前的方式】全局导出：
+在全局下（重启pwshell）
+pip freeze > requirements.txt
+
+
+
+（问题1） 虚拟环境如何【激活】/【切换】/【进入&退出】
+Attention！！！
+每次新开/重启一个 PowerShell 窗口，Python默认都是“全局环境”（系统 PATH 里指向的那个 Python），除非你做了额外的自动激活设置。
+如何检查确认虚拟环境是否正确 ——
+where python
+python -c "import sys; print(sys.executable)"
+
+-------------------------------------------------------------
+方式 A（推荐）：不激活，直接用对应环境的 python
+【 powershell 】
+运行 / 启动 ：  & "D:\project2\env2\Scripts\python.exe" "D:\project2\main.py"
+安装package ：   & "D:\project2\env2\Scripts\python.exe" -m pip install xxx
+
+【IDLE带.venv 启动 - 不激活，直接进入 .venv】
+cd "文件目录"
+& ".\.venv\Scripts\python.exe" -m idlelib ".\ppt_ocr_extractor.py"
+
+【python带.venv 启动 - 不激活，直接进入 .venv】
+cd "文件目录"
+& ".\.venv\Scripts\python.exe" ".\ppt_ocr_extractor.py"
+   or ——       python .\ppt_ocr_extractor.py
+-------------------------------------------------------------
+
+
+方式 B：激活/取消激活（你如果习惯传统做法）
+powershell
+激活环境env2：D:\project2\env2\Scripts\Activate.ps1
+退出环境：deactivate （ 返回上一个环境、不一定是全局！！）
+激活环境env3：D:\project3\env3\Scripts\Activate.ps1
+
+然后，才可以 ——
+运行/启动：python D:\project3\main.py
+安	 装：  python -m pip install -r requirements.txt
+
+
+（问题2） Claude 运行 —— 虚拟环境如何自动指定
+
+1、pwshell进入项目目录，
+cd "D:\Python ( Claude+GPT+Gemini+Grok )\2026-01-13 图片识别（旭宏-马拉松统计）"
+
+2、并激活对应的虚拟环境
+.\.venv\Scripts\Activate.ps1
+
+3、再运行Claude，就不用管剩下的事情啦
+claude
+
+
+
+ .venv 常用操作汇总
+
+按这个逻辑，其实最常用步骤已经固定了：
+1、cd " 你的目录 "
+2、【激活.venv】.\.venv\Scripts\Activate.ps1
+3、【如果要调试 python】    python .\我的文件名
+    or 完整版       & ".\.venv\Scripts\python.exe" ".\ppt_ocr_extractor.py"
+4、claude --resume
+
+
+
+
+
+
