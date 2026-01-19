@@ -1,4 +1,4 @@
-【关于Git: add commit push pr】
+⭐【关于Git: add commit push pr】⭐
 
 Mc：add stage commit push pr 到底有多少个步骤？ 优先顺序是什么？ 我如果要手工操作，到底要遵循哪个完整的流程？
 
@@ -32,10 +32,10 @@ Mc：add stage commit push pr 到底有多少个步骤？ 优先顺序是什么�
 5. Create PR       Web界面              5                  协作请求               PR 前分支未 push
 
 
-这个流程是标准 Git flow（或 GitHub flow），适用于手工操作。
-总步骤约 5 个核心，但视情况扩展。
-如果用工具如 Claude Code 的 /safe-commit，它可自动化 2-3 步（add + commit）。
-如果仓库是团队的，总是从 git pull 开始避免冲突。
+          这个流程是标准 Git flow（或 GitHub flow），适用于手工操作。
+          总步骤约 5 个核心，但视情况扩展。
+          如果用工具如 Claude Code 的 /safe-commit，它可自动化 2-3 步（add + commit）。
+          如果仓库是团队的，总是从 git pull 开始避免冲突。
 
 
 
@@ -146,118 +146,23 @@ git push origin main：推送合并后的 main 到 GitHub。
 
 
 ✔️❌
-📍🧵 🗺️🗡️✂️🎀❄️
+
+📍🧵 🗺️🗡️✂️🎀
 ✅⚠️🎯📌🖍️🧶👉
 
 ⭐✨🌟❤️
 
-
-🌐🌎🎄🎅🎁
-
-
 🚗✈️🏕️🧭🗓️
 
-😭
+🌐🌎🎄🎅🎁❄️
+🎉🔥🤍
+
+
+
+😊😭😂💀🙏👀
 
 🇪🇺
 🇺🇳
 
 
-
-
-
-
-
-❄️
-
-
-
-Christmas Tree
-
-❤️
-Red Heart
-
-✨
-Sparkles
-
-✅
-Check Mark Button
-
-🎅
-Santa Claus
-
-😭
-Loudly Crying Face
-
-🎁
-Wrapped Gift
-
-⭐
-Star
-
-x'x
-Snowflake
-
-🥹
-Face Holding Back Tears
-
-🎉
-Party Popper
-
-🔥
-Fire
-
-✔️
-Check Mark
-
-🫩
-Face with Bags Under Eyes
-
-😂
-Face with Tears of Joy
-
-🤍
-White Heart
-
-🫶
-Heart Hands
-
-😊
-Smiling Face with Smiling Eyes
-
-👀
-Eyes
-
-🙏
-Folded Hands
-
-📍
-Round Pushpin
-
-➡️
-Right Arrow
-
-❤️‍🩹
-Mending Heart
-
-🫠
-Melting Face
-
-🌟
-Glowing Star
-
-👉
-Backhand Index Pointing Right
-
-❌
-Cross Mark
-
-🩷
-Pink Heart
-
-💙
-Blue Heart
-
-💀
-Skull
 
