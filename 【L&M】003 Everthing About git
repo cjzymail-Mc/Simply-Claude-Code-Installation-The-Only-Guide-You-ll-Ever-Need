@@ -21,7 +21,7 @@ Mc：add stage commit push pr 到底有多少个步骤？ 优先顺序是什么�
 
 
 -----------------------------------
-总结表格：步骤、命令和优先级
+🎯 总结表格：步骤、命令和优先级
 -----------------------------------
 
 步骤             命令示例           优先级/顺序         为什么这个顺序？             常见 pitfalls
@@ -37,4 +37,227 @@ Mc：add stage commit push pr 到底有多少个步骤？ 优先顺序是什么�
 如果用工具如 Claude Code 的 /safe-commit，它可自动化 2-3 步（add + commit）。
 如果仓库是团队的，总是从 git pull 开始避免冲突。
 
+
+
+
+-----------------------------------
+📌 1、修改文件（本地）
+-----------------------------------
+  目前阶段，掌握纯手工修改即可
+  Claude code 也会帮我自动修改文件
+  包括 py / CLAUDE.md 文件等等....
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------
+📌 2、保存到本地仓库（本地）     Stage / add /commit   
+---------------------------------------------------------------------------------------------------------
+  ⚠️ "add"和"stage"是同一个概念（git add 用于 staging changes，即将变更添加到暂存区）
+  ⚠️ "commit" 意味着【更新/变更】到本地仓库
+
+
+---------- ✅ bf 提交： 设置提交者信息（全局）（首次，只需要运行一次即可）--------
+git config --global user.name "Mike"
+git config --global user.email "cjzymail@gmail.com"
+
+        ✈️ 检查：git config --global --get user.name or email
+        ✈️ 抹除：git config --global --unset user.name
+
+
+
+---------- ✅ add/stage：将变更添加到暂存区 --------
+git add CLAUDE.md            #add CLAUDE.md文件
+git add .           	       #add 全部文件
+
+        ✈️ 检查： 看当前状态         看改动            看提交记录              看某一次提交里具体改动了什么
+                （有没有未提交        
+                    的改动）
+                  git status         git diff       git log --oneline -5       git show <commit>  👉例如：git show 82f2dec
+
+
+---------- ✅ add/stage：将变更添加到暂存区 --------
+git commit -m "此次变更的提示message，例如简要说明下更新要点"            #commit 最好带上备注
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------
+📌 3、将变更上传到github（本地 to github）      push / pr（pull requests）
+---------------------------------------------------------------------------------------------------------
+
+
+---------- ✅ 推荐方案：保持 main 干净，通过 PR review/合并 --------
+✔️✔️✔️方案2：本地修改 py 文件，不本地合并，直接 push branch 到 GitHub，然后在 GitHub 上手工合并（通过 PR）✔️✔️✔️
+
+git checkout -b feature/py-changes：创建并切换到新 feature branch（隔离修改）。
+修改 py 文件（手工编辑）。
+git add your_py_file.py：暂存 py 修改。
+git commit -m "Update py file with changes"：commit 修改到本地 feature branch。
+git push -u origin feature/py-changes：推送 feature branch 到 GitHub（首次用 -u）。
+
+⭐⭐⭐去 GitHub web 页面，创建 PR：源 feature/py-changes，目标 main，提交描述。⭐⭐⭐
+在 GitHub PR 页面，review 后点击 Merge pull request（手工合并到 main）。
+git checkout main：本地切换回 main。
+git pull origin main：拉取合并后的 main 到本地（同步 GitHub 变更）。
+
+
+
+
+
+---------- ⚠️ 最常见的 Git Pull 和 Push 指令（按顺序）---------- 
+
+git pull origin <branch-name>：从远程拉取变更到本地当前分支，同步代码。
+git fetch origin：下载远程所有分支变更，但不合并到本地。
+git pull --rebase origin <branch-name>：拉取并 rebase 本地变更到远程变更上，避免 merge commit。
+git push origin <branch-name>：推送本地当前分支到远程。
+git push -u origin <branch-name>：首次推送新分支，并设置 upstream tracking。
+git push --force-with-lease origin <branch-name>：强制推送，但检查远程是否有新变更。
+
+
+
+---------- ❌❌❌ 非常规：本地修改 py 文件，在本地合并 2 个 branch，然后 push 到 GitHub ❌❌❌ --------
+（是的，可以本地合并 2 个 branch，如将 feature branch 合并到 main。这简单，但缺少 PR review，适合个人项目。仓库同步后，直接操作。）
+（❌个人方案，测试试验下就行，不能当作标准工作流程❌）
+
+git checkout -b feature/py-changes：创建并切换到新 feature branch（隔离修改）。
+修改 py 文件（手工编辑）。
+git add your_py_file.py：暂存 py 修改。
+git commit -m "Update py file with changes"：commit 修改到本地 feature branch。
+git checkout main：切换回 main branch（目标合并分支）。
+git merge feature/py-changes：本地合并 feature branch 到 main。
+git push origin main：推送合并后的 main 到 GitHub。
+
+
+
+
+
+
+
+✔️❌
+📍🧵 🗺️🗡️✂️🎀❄️
+✅⚠️🎯📌🖍️🧶👉
+
+⭐✨🌟❤️
+
+
+🌐🌎🎄🎅🎁
+
+
+🚗✈️🏕️🧭🗓️
+
+😭
+
+🇪🇺
+🇺🇳
+
+
+
+
+
+
+
+❄️
+
+
+
+Christmas Tree
+
+❤️
+Red Heart
+
+✨
+Sparkles
+
+✅
+Check Mark Button
+
+🎅
+Santa Claus
+
+😭
+Loudly Crying Face
+
+🎁
+Wrapped Gift
+
+⭐
+Star
+
+x'x
+Snowflake
+
+🥹
+Face Holding Back Tears
+
+🎉
+Party Popper
+
+🔥
+Fire
+
+✔️
+Check Mark
+
+🫩
+Face with Bags Under Eyes
+
+😂
+Face with Tears of Joy
+
+🤍
+White Heart
+
+🫶
+Heart Hands
+
+😊
+Smiling Face with Smiling Eyes
+
+👀
+Eyes
+
+🙏
+Folded Hands
+
+📍
+Round Pushpin
+
+➡️
+Right Arrow
+
+❤️‍🩹
+Mending Heart
+
+🫠
+Melting Face
+
+🌟
+Glowing Star
+
+👉
+Backhand Index Pointing Right
+
+❌
+Cross Mark
+
+🩷
+Pink Heart
+
+💙
+Blue Heart
+
+💀
+Skull
 
