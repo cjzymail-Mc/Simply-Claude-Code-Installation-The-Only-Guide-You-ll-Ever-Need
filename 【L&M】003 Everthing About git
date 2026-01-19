@@ -1,0 +1,40 @@
+【关于Git: add commit push pr】
+
+Mc：add stage commit push pr 到底有多少个步骤？ 优先顺序是什么？ 我如果要手工操作，到底要遵循哪个完整的流程？
+
+  Git 操作流程：从修改到 Pull Request
+  
+  "add"、"stage"、"commit"、"push"和"PR"（Pull Request）是 Git 版本控制的核心操作
+  
+  但其中"add"和"stage"是同一个概念（git add 用于 staging changes，即将变更添加到暂存区）
+  
+  这些步骤不是独立的，而是 Git 工作流程的一部分，通常按顺序执行：
+  
+  先本地准备变更（add/stage + commit），然后推送到远程（push），最后创建 PR（如果在协作仓库如 GitHub 上）
+  
+  总步骤数取决于上下文，但标准流程有 5-7 个主要步骤（从修改文件开始，到 PR 完成）
+  
+  优先顺序是严格的线性流程：不能跳过前一步（e.g., 必须 commit 后才能 push）
+  
+  如果仓库是全新的或从零开始，可能多一两个初始化步骤
+
+
+
+-----------------------------------
+总结表格：步骤、命令和优先级
+-----------------------------------
+
+步骤             命令示例           优先级/顺序         为什么这个顺序？             常见 pitfalls
+1. 修改文件       编辑文件           最高（起点）         无变更无后续               忘了保存文件
+2. Stage       (add) git add .          2             预览变更给 commit           忘了 add，导致 commit 失败
+3. Commit       git commit -m "msg"     3               保存本地历史             消息模糊，难回溯
+4. Push       git push origin main      4                 上传到远程               冲突未解决，push 拒
+5. Create PR       Web界面              5                  协作请求               PR 前分支未 push
+
+
+这个流程是标准 Git flow（或 GitHub flow），适用于手工操作。
+总步骤约 5 个核心，但视情况扩展。
+如果用工具如 Claude Code 的 /safe-commit，它可自动化 2-3 步（add + commit）。
+如果仓库是团队的，总是从 git pull 开始避免冲突。
+
+
