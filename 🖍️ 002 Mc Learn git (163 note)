@@ -1,0 +1,104 @@
+❌❌❌❌❌❌❌❌❌❌
+这份笔记整理太散乱，纯粹作为历史记录保存
+使用价值不高，仅供参考
+❌❌❌❌❌❌❌❌❌❌
+
+
+
+------------- 第一步：简单入门（add / commit） -------------
+1、纯手工 - 新建CLAUDE.md文件（内容尽量简单，测试用；我用Claude生成了一个）
+https://code.visualstudio.com/Download
+继续安装md文件编辑器 —— vs code
+
+
+2、用Git提交md文件（3步曲）
+----------  bf 提交： 设置提交者信息（全局）--------
+git config --global user.name "Mike"
+git config --global user.email "cjzymail@gmail.com"
+
+--------- 如何检查user.name / mail ---------
+检查：git config --global --get user.name or email
+抹除：git config --global --unset user.name
+
+-------- 正式提交：add + commit --------
+git add CLAUDE.md            #add CLAUDE.md文件
+git add .           	      #add 全部文件
+git commit -m "Add CLAUDE.md for shared norms"            #commit 最好带上备注
+
+------提交时未设置name/mail，如何补救？------
+补救（添加个人戳）：  git commit --amend --reset-author --no-edit
+检查是否补救成功：  git log -1
+
+
+3、简单测试下 —— hello.py
+我故意写了一个错误版本的 print（哈罗） py文件
+让 claude 根据CLAUDE.md 文件规范进行修改
+
+
+
+4、让Claude协助更新 md 文件 —— 实现“复合知识”
+进阶提示（摸索阶段别急）：以后在PR中用@claude标签自动更新它，实现“复合知识”
+如果我认为这段debug过程中碰到的问题很典型，
+我可以要求Claude将它写入CLAUDE.md文件
+
+我还可以要求Claude git add / commit 更新（便于后续团队查看）
+它会帮我对比 .git 里面的 md旧版文件 与 更新后的md 文件差异
+然后执行git命令
+
+如何检查Claude是否成功执行git呢 ？？
+
+
+
+
+------------- 检查更新情况（status / log / show） -------------
+powershell
+1、看当前状态（有没有未提交的改动）
+git status
+
+2、看它到底改了什么内容
+git diff
+
+3、看提交记录（确认是否产生了新 commit）
+git log --oneline -5
+
+4、看某一次提交里具体改动了什么
+git show <commit>       
+# 把 <commit> 换成 log 里的那串哈希，例如
+git show 82f2dec
+
+到这里，你这是进入了 Git 的分页器（pager，通常是 less），不是编辑模式 👍
+git show 默认会用它来展示内容。
+退出方法（最常用）
+👉 直接按 q（quit）即可退出，回到命令行。
+补充（知道即可）
+上下滚动：↑ ↓ 或 j / k
+下一页：Space
+搜索：/关键词
+退出：q
+
+
+
+
+powershell
+5、专门确认 CLAUDE.md 的历史改动
+git log --oneline -- CLAUDE.md
+git show HEAD -- CLAUDE.md
+
+6、***如果你还涉及推送到远端，确认是否已推送：
+git remote -v
+git log --oneline --decorate --graph -5
+
+7、推送 / 拉取（暂时不明白有啥用。。）
+git push
+git pull
+
+
+
+
+
+
+
+
+
+
+
