@@ -266,6 +266,91 @@ git reset --hard origin/<branch>
 
 
 
+---------------------------------------------------------------------------------------------------------------
+📌 实战疑问4：数据库文件 10mb，后期如何清理空间？
+---------------------------------------------------------------------------------------------------------------
+
+方法 1：使用 BFG Repo-Cleaner（推荐，简单）
+BFG 是专门清理 Git 历史的工具，比 git filter-branch 快 10-100 倍。
+步骤：
+bash# 1. 下载 BFG
+# 访问: https://rtyley.github.io/bfg-repo-cleaner/
+# 下载 bfg.jar
+
+# 2. 克隆一个镜像仓库
+cd /d/Downloads
+git clone --mirror https://github.com/cjzymail-Mc/F*****.git
+
+# 3. 删除所有 CSV 文件（从所有历史记录中）
+java -jar bfg.jar --delete-files "*.csv" -2026.git
+
+# 4. 清理 Git 仓库
+cd F*****.git
+git reflog expire --expire=now --all
+git gc --prune=now --aggressive
+
+# 5. 强制推送到 GitHub（会覆盖远程历史）
+git push --force
+
+# 6. 删除镜像仓库
+cd ..
+rm -rf F*****.git
+
+--------------
+方法 2：使用 git filter-repo（官方推荐）
+bash# 1. 安装 git-filter-repo
+# Windows: pip install git-filter-repo
+# 或下载: https://github.com/newren/git-filter-repo
+
+# 2. 备份仓库
+cp -r Mc-repo Mc-repo-backup
+
+# 3. 删除所有 CSV 文件
+cd Mc-repo
+git filter-repo --path-glob '*.csv' --invert-paths
+
+# 4. 强制推送
+git remote add origin https://github.com/cjzymail-Mc/F*****.git
+git push --force --all
+
+--------------
+方法 3：直接删库重建（最简单暴力）
+如果仓库不大，直接重新开始：
+bash# 1. 在 GitHub 上删除仓库
+# Settings → Danger Zone → Delete this repository
+
+# 2. 本地删除 .git 目录（清除所有历史）
+rm -rf .git
+
+# 3. 删除所有 CSV 文件
+rm data*.csv
+
+# 4. 重新初始化
+git init
+git add .
+git commit -m "Initial commit without data files"
+
+# 5. 创建新的 GitHub 仓库，推送
+git remote add origin https://github.com/cjzymail-Mc/F*******.git
+git push -u origin main
+
+
+=====实用建议=======
+个人项目最佳实践：
+bash# 1. 不用 .gitignore（你已经推送了）
+# 2. 正常使用，继续推送新版本
+# 3. 每隔一段时间检查仓库大小：
+
+# 查看本地仓库大小
+👉du -sh .git
+
+# 查看 GitHub 仓库大小（在仓库主页右侧显示）
+
+
+
+
+
+
 
 
 
